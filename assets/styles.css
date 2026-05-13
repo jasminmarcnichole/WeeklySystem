@@ -1142,3 +1142,246 @@ textarea:focus {
     font-size: 1.5rem;
     font-weight: 900;
 }
+
+.admin-layout {
+    display: grid;
+    gap: 0;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.88rem;
+}
+
+.admin-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.admin-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: #f7f7f2;
+    border-bottom: 2px solid var(--line);
+}
+
+.admin-table th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.admin-table th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.admin-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(21, 23, 26, 0.06);
+    background: #fff;
+    transition: background 180ms ease;
+}
+
+.admin-table tbody tr:hover td {
+    background: rgba(31, 138, 112, 0.04);
+}
+
+.admin-table tr.is-selected td {
+    background: rgba(31, 138, 112, 0.1);
+    border-bottom-color: rgba(31, 138, 112, 0.2);
+}
+
+.admin-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+.admin-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.user-name-cell {
+    font-weight: 800;
+    color: var(--ink);
+}
+
+.user-email-cell {
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+.task-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    min-height: 28px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    color: var(--blue);
+    background: rgba(53, 92, 125, 0.12);
+    font-weight: 900;
+    font-size: 0.82rem;
+}
+
+.date-cell {
+    color: var(--muted);
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+.admin-step-list {
+    list-style: none;
+    margin: 0;
+    padding: 12px 18px 14px;
+    display: grid;
+    gap: 8px;
+}
+
+.admin-step-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.86rem;
+}
+
+.admin-step-list li small {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.76rem;
+}
+
+.user-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    padding: 18px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(31, 138, 112, 0.06), rgba(53, 92, 125, 0.04));
+    border: 1px solid rgba(31, 138, 112, 0.12);
+}
+
+.user-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.user-info-label {
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.user-info-value {
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.user-info-value.highlight {
+    color: var(--teal);
+    font-size: 1.1rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(21, 23, 26, 0.7);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--panel);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 560px;
+    box-shadow: 0 25px 70px rgba(21, 23, 26, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--line);
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+    background: rgba(21, 23, 26, 0.06);
+    color: var(--ink);
+}
+
+.modal-body {
+    padding: 28px;
+    display: grid;
+    gap: 18px;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 8px;
+}

@@ -36,6 +36,9 @@ $initial = strtoupper(substr($displayName, 0, 1));
                 <a class="side-link" href="create_task.php">New task</a>
                 <a class="side-link" href="history.php">History</a>
                 <a class="side-link" href="notifications.php">Notices</a>
+                <?php if (has_role($user, 'admin')): ?>
+                <a class="side-link" href="admin.php">Admin</a>
+                <?php endif; ?>
             </nav>
 
             <div class="profile-card">

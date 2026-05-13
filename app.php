@@ -70,6 +70,7 @@ function ensure_schema(PDO $pdo): void
 
     db_add_column($pdo, 'users', 'name', 'VARCHAR(120) NULL AFTER id');
     db_add_column($pdo, 'users', 'email', 'VARCHAR(190) NULL AFTER name');
+    db_add_column($pdo, 'users', 'role', "ENUM('user','admin') NOT NULL DEFAULT 'user' AFTER password");
     db_add_index($pdo, 'users', 'users_email_unique', 'UNIQUE KEY users_email_unique (email)');
 
     $pdo->exec(
@@ -261,6 +262,28 @@ function require_auth(PDO $pdo): array
     }
 
     return $user;
+}
+
+function has_role(array $user, string $role): bool
+{
+    return ($user['role'] ?? 'user') === $role;
+}
+
+function require_role(PDO $pdo, string $role): array
+{
+    $user = require_auth($pdo);
+
+    if (!has_role($user, $role)) {
+        http_response_code(403);
+        exit('Access denied.');
+    }
+
+    return $user;
+}
+
+function require_admin(PDO $pdo): array
+{
+    return require_role($pdo, 'admin');
 }
 
 function redirect(string $path): void

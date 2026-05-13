@@ -17,6 +17,12 @@ $user = $stmt->fetch();
 if ($user && password_verify($password, $user['password'])) {
     session_regenerate_id(true);
     $_SESSION['user_id'] = (int) $user['id'];
+    
+    // Redirect based on role
+    if (($user['role'] ?? 'user') === 'admin') {
+        redirect('admin.php');
+    }
+    
     redirect('dashboard.php');
 }
 

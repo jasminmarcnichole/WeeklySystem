@@ -37,10 +37,10 @@ $user = current_user($pdo);
                     locked failed schedules, and Gmail deadline notices.
                 </p>
                 <div class="hero-actions">
-                    <a class="button button-dark" href="<?php echo $user ? 'dashboard.php' : 'register.php'; ?>">
+                    <a class="button button-dark" href="<?php echo $user ? (has_role($user, 'admin') ? 'admin.php' : 'dashboard.php') : 'register.php'; ?>">
                         Open board
                     </a>
-                    <a class="button button-light" href="<?php echo $user ? 'dashboard.php#new-task' : 'login.php'; ?>">
+                    <a class="button button-light" href="<?php echo $user ? (has_role($user, 'admin') ? 'admin.php' : 'dashboard.php#new-task') : 'login.php'; ?>">
                         Start planning
                     </a>
                 </div>
