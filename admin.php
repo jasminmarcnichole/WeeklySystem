@@ -61,7 +61,7 @@ if ($viewUserId) {
 <body class="app-page">
     <div class="dashboard-shell">
         <aside class="sidebar">
-            <a class="brand" href="dashboard.php">
+            <a class="brand" href="admin.php">
                 <span class="brand-mark">W</span>
                 <span>Weekly Task System</span>
             </a>
